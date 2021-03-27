@@ -108,7 +108,7 @@ let searchGif = async (userInput, number) => {
     })
     return arraySearchGifs
 }
-
+// holi prueba git //
 let drawGifsSearch = (input) => {
     let gifs = searchGif(input, 45)
     gifs.then(res => {
