@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/sketch-gifos/style.css">
+    <script src="https://kit.fontawesome.com/370b41e712.js" crossorigin="anonymous"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <ul class="tabs-section">
+            <li data-tab-target=".gifs-search">SEARCH</li>
+            <li data-tab-target=".gifs-trending">TRENDING</li>
+            <li data-tab-target=".gifs-favorites">FAVORITES</li>
+        </ul>
+    </header>
+    <div class="tab-content">
+        <div class="gifs-search active" data-tab-content>
+            <div class="input-search">
+                <input type="text" class="input-text" value="" placeholder="Type to search">
+                <a class="press-button-search" href="#">
+                    <i id="search-button" class="fas fa-search"></i>
+                    <i id="cancel-button" class="fas fa-times"></i>
+                </a>
+            </div>
+            <div class="suggestions">
+
+            </div>
+
+            <div class="search-container">
+
+            </div>
+            <input type="button" value="See more" class="button-seemore">
+        </div>
+        <div class="gifs-trending" data-tab-content>
+            <input type="button" value="<" class="press-button backwards" id="backwards">
+            <div class="gifs-trending-container">
+
+            </div>
+            <input type="button" value=">" class="press-button forward" id="forward">
+        </div>
+        <div class="gifs-favorites" data-tab-content>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
