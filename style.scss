@@ -62,36 +62,42 @@
                 justify-content: center;
                 align-items: center;
                 text-decoration: none;
-                #search-button{
-                    &.inactive{
+
+                #search-button {
+                    &.inactive {
                         display: none;
                     }
                 }
-                #cancel-button{
+
+                #cancel-button {
                     display: none;
-                    &.active{
+
+                    &.active {
                         display: flex;
                     }
                 }
 
-                
+
             }
         }
-        .suggestions{
+
+        .suggestions {
             width: 50%;
             margin: 0 auto;
             display: flex;
             flex-flow: column wrap;
-            transition: 5s ;
+            transition: 5s;
             z-index: 1;
             height: 200px;
-                div{
-                    height: 30px;
-                    width: 100%;
-                    border: 1px solid black;
-                    background: cadetblue;
-                }
+
+            div {
+                height: 30px;
+                width: 100%;
+                border: 1px solid black;
+                background: cadetblue;
+            }
         }
+
         /*
         &.active{
             display: flex;
@@ -113,15 +119,17 @@
             gap: 5px;
             width: 80%;
             overflow: hidden;
+
             .search-container-gifs {
                 width: 200px;
                 height: 200px;
             }
         }
-        
-        .button-seemore{
+
+        .button-seemore {
             display: none;
-            &.active{
+
+            &.active {
                 display: flex;
                 width: 100px;
                 margin: 20px auto;
@@ -129,7 +137,7 @@
                 justify-content: center;
             }
         }
-        
+
     }
 
     .gifs-trending {
@@ -139,54 +147,83 @@
         margin: 2rem auto;
         position: relative;
         overflow: hidden;
+
         .gifs-trending-container {
             display: flex;
             gap: 5px;
             transition: transform 0.25s;
 
-            .gifs-trending-img {
+            .div-container {
                 width: 200px;
                 height: 200px;
-            }
-        }
+                position: relative;
 
-        .press-button {
-            font-size: 1.5rem;
-            font-weight: bold;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: opacity 0.25s;
-            opacity: 0.25;
-            border: 0;
-            height: 3rem;
-            width: 3rem;
-            z-index: 1;
-            position: absolute;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
 
-            &.backwards {
-                left: 5px;
+                .div-overlay{
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    background: #e67e22;
+                    opacity: 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: flex-end;
+                    img{
+                        border: 1px solid black;
+                        width: 50px;
+                        height: 50px;
+                    }
+                }
+                .div-overlay:hover{
+                    opacity: 0.5;
+                }
             }
 
-            &.forward {
-                right: 5px;
-            }
-
-            &:hover {
-                opacity: 0.5;
-            }
         }
     }
 
-    .gifs-favorites {
-        justify-content: center;
-        align-content: flex-start;
-        flex-wrap: wrap;
-        padding-top: 10px;
-        gap: 5px;
+    .press-button {
+        font-size: 1.5rem;
+        font-weight: bold;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: opacity 0.25s;
+        opacity: 0.25;
+        border: 0;
+        height: 3rem;
+        width: 3rem;
+        z-index: 1;
+        position: absolute;
 
-        .gifs-favorites-img {
-            width: 200px;
-            height: 200px;
+        &.backwards {
+            left: 5px;
         }
+
+        &.forward {
+            right: 5px;
+        }
+
+        &:hover {
+            opacity: 0.5;
+        }
+    }
+}
+
+.gifs-favorites {
+    justify-content: center;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    padding-top: 10px;
+    gap: 5px;
+
+    .gifs-favorites-img {
+        width: 200px;
+        height: 200px;
     }
 }

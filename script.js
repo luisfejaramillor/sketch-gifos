@@ -20,6 +20,24 @@ let containerTrending = document.querySelector(".gifs-trending-container")
 let containerFavorites = document.querySelector(".gifs-favorites")
 let gifKey = "Kgtc3PtS5s0QmceWRa7YZEb3CAR82e95"
 
+
+setTimeout(() => {
+    let divContainer = document.querySelectorAll(".div-container")
+    divContainer.forEach(x => {
+        let url = x.firstChild.src
+        x.addEventListener("click", (e) => {
+            if (e.target.src === "http://127.0.0.1:5500/sketch-gifos/resources/icon-fav.svg") {
+                let gif = document.createElement("img")
+                gif.setAttribute("src", url)
+                gif.classList.add("gifs-favorites-img")
+                containerFavorites.appendChild(gif)
+            }
+        })
+    })
+}, 100);
+
+
+
 let tredingGif = async (number) => {
     let arrayGif = []
     let url = `https://api.giphy.com/v1/gifs/trending?api_key=${gifKey}&limit=${number}`
@@ -39,27 +57,63 @@ let drawGifs = () => {
     let gifs = tredingGif(30)
     gifs.then(res => {
         for (let i = 0; i < res.length; i++) {
-            creatGif(res[i])
+            creatDivContainer(res[i])
         }
     })
-
 }
 
-let creatGif = (url) => {
+
+
+let creatDivContainer = (url) => {
+    let div = document.createElement("div")
+    div.classList.add("div-container")
+    containerTrending.appendChild(div)
+    creatGif(url, div)
+    creatDivOverlay(div)
+}
+
+let creatGif = (url, div) => {
     let gif = document.createElement("img")
     gif.setAttribute("src", url)
-    gif.classList.add("gifs-trending-img")
-    containerTrending.appendChild(gif)
+    div.appendChild(gif)
 }
 
+let creatDivOverlay = (div) => {
+    let divOverlay = document.createElement("div")
+    divOverlay.classList.add("div-overlay")
+    div.appendChild(divOverlay)
+    creatInsideButtons(divOverlay)
+}
+
+let creatInsideButtons = (div) => {
+    let favorites = document.createElement("img")
+    favorites.setAttribute("src", "/sketch-gifos/resources/icon-fav.svg")
+    let expand = document.createElement("img")
+    expand.setAttribute("src", "/sketch-gifos/resources/icon-max-normal.svg")
+    let download = document.createElement("img")
+    download.setAttribute("src", "/sketch-gifos/resources/icon-download.svg")
+    div.appendChild(favorites)
+    div.appendChild(expand)
+    div.appendChild(download)
+}
+
+
+
+/*
 containerTrending.addEventListener("click", (e) => {
+    console.log(e.target)
     let gif = document.createElement("img")
     gif.setAttribute("src", e.target.src)
     gif.classList.add("gifs-favorites-img")
     containerFavorites.appendChild(gif)
 })
-
+*/
 drawGifs()
+////MOUSEOVER EVENT FOR EVERY TREDING GIFS TO CHANGE THEIR BACKGROUND COLOR AND TO ADD SOME BUTTONS
+
+
+
+
 
 //////////////////////////////////////////////////////////////////////////
 
